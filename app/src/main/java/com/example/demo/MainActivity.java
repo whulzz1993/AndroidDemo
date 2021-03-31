@@ -2,6 +2,8 @@ package com.example.demo;
 
 import android.os.Bundle;
 
+import com.example.demo.test.KVTest;
+import com.example.demo.test.Test;
 import com.example.javapipe.JavaPipe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -11,6 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+
+import core.module.kv.KVUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Test.main();
                 mPipe.pipeWrite();
             }
         });

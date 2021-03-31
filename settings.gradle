@@ -1,3 +1,4 @@
+include ':KVModule'
 include ':javaPipe'
 include ':app'
 rootProject.name = "Demo"
