@@ -5,18 +5,25 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    ndkVersion "21.1.6352462"
 
     defaultConfig {
         applicationId "com.example.demo"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                abiFilters "armeabi-v7a", "arm64-v8a"
+            }
+        }
     }
 
     sourceSets {
         main {
-            java.srcDirs = ['src/main/java']
+            java.srcDirs = ['src/main/java',
+                            ]
         }
     }
 
@@ -30,6 +37,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    packagingOptions {
+        pickFirst 'lib/*/libc++_shared.so'
+    }
 }
 
 dependencies {
@@ -42,4 +53,6 @@ dependencies {
 
     implementation project(path: ':javaPipe')
     implementation project(path: ':KVModule')
+//    implementation project(path: ':gadgetModule')
+    implementation project(path: ':runtimeFake')
 }
