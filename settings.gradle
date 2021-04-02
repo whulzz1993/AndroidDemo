@@ -1,3 +1,5 @@
+include ':runtimeFake'
+include ':gadgetModule'
 include ':KVModule'
 include ':javaPipe'
 include ':app'
