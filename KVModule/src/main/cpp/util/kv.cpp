@@ -94,8 +94,8 @@ public:
         atomic_init(&serial_, (unsigned int) 0);
         pthread_mutex_init(&mLock, NULL);
         memset(reserved_, 0, sizeof(reserved_));
-        bytes_used_ = 0;
-        pa_data_size = pa_size - sizeof(kv_area);
+        this->bytes_used_ = sizeof(kv_area);
+        this->pa_size = pa_size;
     }
 
     size_t areaSize() const { return pa_size; }
@@ -140,7 +140,6 @@ private:
                       void *cookie);
 
     size_t pa_size;
-    size_t pa_data_size;
     uint32_t bytes_used_;
     pthread_mutex_t mLock;
     atomic_uint_least32_t serial_;
@@ -324,7 +323,7 @@ static strtab_area *map_strtab(const char *filename) {
 void *kv_area::allocate_obj(const size_t size, uint_least32_t *const off) {
     ScopedMutexLock _lock(&mLock);
     const size_t aligned = BYTE_ALIGN(size, sizeof(uint_least32_t));
-    if (bytes_used_ + aligned >= pa_data_size) {
+    if (bytes_used_ + aligned >= pa_size) {
         LOGE("allocate_obj failed!");
         return NULL;
     }
@@ -332,7 +331,7 @@ void *kv_area::allocate_obj(const size_t size, uint_least32_t *const off) {
     *off = bytes_used_;
     bytes_used_ += aligned;
 #ifdef DEBUG_AREA
-    LOGD("allocate_obj pa_data_size: %zu bytes_used: %d", pa_data_size, bytes_used_);
+    LOGD("allocate_obj pa_size: %zu bytes_used: %d", pa_size, bytes_used_);
 #endif
     return data_ + *off;
 }
@@ -363,7 +362,7 @@ kv_bt *kv_area::new_prop_bt(const char *name, uint32_t namelen, uint_least32_t *
 }
 
 void *kv_area::to_prop_obj(uint_least32_t off) {
-    if (off > pa_data_size)
+    if (off > pa_size)
         return NULL;
 
     return (data_ + off);
