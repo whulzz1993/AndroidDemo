@@ -24,9 +24,6 @@ add_library(
         SHARED
         ${sources}
 )
-include_directories(
-        ${BITS_HEADER_DIR}
-)
 target_include_directories(runtimefake PUBLIC
         include
         )
@@ -47,6 +44,5 @@ find_library(
 
 target_link_libraries(
         runtimefake
-        ${BITS_SO_DIR_ABI}/libnpth_unw.so
         ${log-lib}
 )

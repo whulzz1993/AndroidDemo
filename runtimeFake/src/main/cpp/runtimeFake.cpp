@@ -8,7 +8,6 @@
 //abort
 #include <stdlib.h>
 #include <string.h>
-#include "npth_unw.h"
 
 //abort
 #define LOG_TAG "runtimeFake"
@@ -80,8 +79,6 @@ void fakePrivateApiCheck(JNIEnv* env, jclass clazz, int targetSdkVersion)
 }
 
 static void test_remove(JNIEnv* env, jclass clazz, jstring jpath) {
-
-    ALOGD("test_remove: %s", npth_unw_fast());
     const char* cpath = env->GetStringUTFChars(jpath, 0);
     remove(cpath);
     env->ReleaseStringUTFChars(jpath, cpath);

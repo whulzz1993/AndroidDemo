@@ -42,19 +42,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                //MeizuHook.installHook();
-                File ff = new File("/sdcard/libs/1.txt");
-                if (ff.exists()) {
-                    try {
-                        ff.delete();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                //Test.main();
-                //mPipe.pipeWrite();
+                Test.main();
+                mPipe.pipeWrite();
             }
         });
 
@@ -63,20 +52,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MeizuHook.installHook();
-
-//                isAutoRevokeWhitelisted
-
                 String className = "android.permission.IPermissionManager$Stub";
-
                 RefUtils.MethodRef<IBinder> getServiceMethod =
                         new RefUtils.MethodRef<IBinder>("android.os.ServiceManager",
                                 true, "getService", new Class[]{String.class});
-
                 RefUtils.MethodRef<Object> asInterfaceMethod =
                         new RefUtils.MethodRef<Object>(className, true,
                                 "asInterface", new Class[]{IBinder.class});
-
-
                 Object defBinder = getServiceMethod.invoke(null, new Object[]{"permissionmgr"});
                 Object binderProxy = asInterfaceMethod.invoke(null, new Object[]{defBinder});
 
@@ -90,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //mPipe = new JavaPipe();
-        //testPipe();
+        mPipe = new JavaPipe();
+        testPipe();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions();

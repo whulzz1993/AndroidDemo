@@ -13,7 +13,6 @@ typedef struct strtab_info {
 struct strtab_area {
     size_t tab_size;
     size_t bytes_used;
-    size_t data_size;
     pthread_mutex_t mLock;
 
     union {
@@ -24,8 +23,8 @@ struct strtab_area {
     strtab_area(size_t mapSize) {
         pthread_mutex_init(&mLock, NULL);
         tab_size = mapSize;
-        bytes_used = 0;
-        data_size = tab_size - sizeof(strtab_area);
+        this->bytes_used = sizeof(strtab_area);
+        this->tab_size = mapSize;
     }
 
     void clear() {
