@@ -2,10 +2,10 @@ package com.example.kvmodulejava.core;
 
 public class KVManager {
 
-    private DataOper mTrie;
+    private DataOper mOper;
 
     private KVManager() {
-        mTrie = new DataOper();
+        mOper = new DataOper();
     }
 
     public static KVManager getInstance() {
@@ -13,11 +13,11 @@ public class KVManager {
     }
 
     public boolean set(int type, String key, String value) {
-        return mTrie.set(type, key, value);
+        return mOper.set(type, key, value);
     }
 
     public String get(int type, String key) {
-        return mTrie.get(type, key);
+        return mOper.get(type, key);
     }
 
     private static class defaultManager {
