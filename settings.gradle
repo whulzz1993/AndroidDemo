@@ -1,3 +1,4 @@
+include ':MD5Module'
 include ':RBTree'
 include ':KVModuleJava'
 include ":KVModuleNative"

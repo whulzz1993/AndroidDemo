@@ -55,5 +55,5 @@ dependencies {
 //    implementation project(path: ':gadgetModule')
     implementation project(path: ':runtimeFake')
     implementation project(path: ':KVModuleNative')
-    implementation project(path: ':RBTree')
+//    implementation project(path: ':RBTree')
 }

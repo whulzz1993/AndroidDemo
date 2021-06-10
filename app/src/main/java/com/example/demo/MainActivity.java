@@ -4,7 +4,7 @@ import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.core.rbtree.util.JniBridge;
+//import com.core.rbtree.util.JniBridge;
 import com.example.demo.test.MeizuHook;
 import com.example.demo.test.RefUtils;
 import com.example.demo.test.Test;
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Test.main();
-                JniBridge.NIRM(getApplicationInfo().dataDir, true);
-                JniBridge.test();
+//                JniBridge.NIRM(getApplicationInfo().dataDir, true);
+//                JniBridge.test();
                 mPipe.pipeWrite();
             }
         });
