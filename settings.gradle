@@ -1,7 +1,9 @@
+include ':RBTree'
 include ':KVModuleJava'
+include ":KVModuleNative"
 include ':runtimeFake'
 include ':gadgetModule'
-include ':KVModule'
+//include ':KVModule'
 include ':javaPipe'
 include ':app'
 rootProject.name = "Demo"

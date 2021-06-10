@@ -51,7 +51,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.4'
 
     implementation project(path: ':javaPipe')
-    implementation project(path: ':KVModule')
+//    implementation project(path: ':KVModule')
 //    implementation project(path: ':gadgetModule')
     implementation project(path: ':runtimeFake')
+    implementation project(path: ':KVModuleNative')
+    implementation project(path: ':RBTree')
 }

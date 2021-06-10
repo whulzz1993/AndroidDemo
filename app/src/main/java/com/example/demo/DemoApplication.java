@@ -21,7 +21,7 @@ public class DemoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        KVUtils.init(this);
+//        KVUtils.init(this);
         //RuntimeFake.fakeRuntime(getApplicationInfo().targetSdkVersion);
     }
 }
