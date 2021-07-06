@@ -8,3 +8,4 @@ include ':gadgetModule'
 include ':javaPipe'
 include ':app'
 rootProject.name = "Demo"
+include ':hack'

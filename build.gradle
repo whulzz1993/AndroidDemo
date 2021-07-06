@@ -16,9 +16,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://maven.byted.org/repository/ugc_android/' }
-        maven { url 'https://ies-maven.bytedance.net/repository/aweme/' }
-        maven { url 'http://maven.byted.org/repository/android_public/' }
     }
 }
 

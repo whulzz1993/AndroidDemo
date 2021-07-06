@@ -17,6 +17,4 @@ public class RuntimeFake {
      *
      */
     private static native void fake(int targetSdk);
-
-    public static native void testRemove(String path);
 }

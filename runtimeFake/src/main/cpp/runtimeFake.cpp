@@ -78,16 +78,16 @@ void fakePrivateApiCheck(JNIEnv* env, jclass clazz, int targetSdkVersion)
 #endif
 }
 
-static void test_remove(JNIEnv* env, jclass clazz, jstring jpath) {
-    const char* cpath = env->GetStringUTFChars(jpath, 0);
-    remove(cpath);
-    env->ReleaseStringUTFChars(jpath, cpath);
-}
+//static void test_remove(JNIEnv* env, jclass clazz, jstring jpath) {
+//    const char* cpath = env->GetStringUTFChars(jpath, 0);
+//    remove(cpath);
+//    env->ReleaseStringUTFChars(jpath, cpath);
+//}
 
 static const char *className = "core/module/runtimefake/RuntimeFake";
 static JNINativeMethod methods[] = {
         {"fake", "(I)V", (void*) fakePrivateApiCheck},
-        {"testRemove", "(Ljava/lang/String;)V", (void*) test_remove},
+//        {"testRemove", "(Ljava/lang/String;)V", (void*) test_remove},
 };
 typedef union {
     JNIEnv* env;

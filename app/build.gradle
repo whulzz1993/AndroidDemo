@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.demo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -55,5 +55,7 @@ dependencies {
 //    implementation project(path: ':gadgetModule')
     implementation project(path: ':runtimeFake')
     implementation project(path: ':KVModuleNative')
+
+    implementation project(path: ':hack')
 //    implementation project(path: ':RBTree')
 }
