@@ -57,5 +57,6 @@ dependencies {
     implementation project(path: ':KVModuleNative')
 
     implementation project(path: ':hack')
+    implementation project(path: ':AESModule')
 //    implementation project(path: ':RBTree')
 }

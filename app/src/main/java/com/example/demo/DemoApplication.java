@@ -12,6 +12,7 @@ public class DemoApplication extends Application {
 
     static {
         //System.loadLibrary("gadget");
+        System.loadLibrary("aesmodule");
     }
     @Override
     protected void attachBaseContext(Context base) {

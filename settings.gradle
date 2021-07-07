@@ -1,3 +1,4 @@
+include ':AESModule'
 include ':MD5Module'
 include ':RBTree'
 include ':KVModuleJava'
