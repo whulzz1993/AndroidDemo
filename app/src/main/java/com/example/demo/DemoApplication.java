@@ -3,6 +3,7 @@ package com.example.demo;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.demo.test.ApiFakeTest;
 import com.example.demo.test.IoUtils;
 
 import core.module.kv.KVUtils;
@@ -22,6 +23,7 @@ public class DemoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ApiFakeTest.fakeHiddenAPiTest();
 //        KVUtils.init(this);
         //RuntimeFake.fakeRuntime(getApplicationInfo().targetSdkVersion);
     }

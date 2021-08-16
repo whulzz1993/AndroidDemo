@@ -53,6 +53,7 @@ dependencies {
     implementation project(path: ':javaPipe')
 //    implementation project(path: ':KVModule')
 //    implementation project(path: ':gadgetModule')
+    implementation project(path: ':apifake')
     implementation project(path: ':runtimeFake')
     implementation project(path: ':KVModuleNative')
 

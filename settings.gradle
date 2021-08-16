@@ -1,3 +1,4 @@
+include ':apifake'
 include ':AESModule'
 include ':MD5Module'
 include ':RBTree'
