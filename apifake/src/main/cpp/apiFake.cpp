@@ -35,6 +35,15 @@ bool setApiBlacklistExemptions(JNIEnv* env) {
                     "([Ljava/lang/String;)V");
     if (setApiBlackListApiMethod == nullptr) {
         ALOGE("not found method");
+        env->ExceptionClear();
+        setApiBlackListApiMethod =
+                env->GetStaticMethodID(zygoteInitClass,
+                        "setApiDenylistExemptions",
+                        "([Ljava/lang/String;)V");
+    }
+
+    if (setApiBlackListApiMethod == nullptr) {
+        ALOGE("not found method");
         return false;
     }
 
