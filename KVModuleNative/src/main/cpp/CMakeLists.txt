@@ -30,7 +30,7 @@ if(cmake_build_type_lower STREQUAL "release")
     set(ENABLE_DEBUG OFF CACHE BOOL "" FORCE)
 else()
     message(VERBOSE "begin build debug")
-    set(ENABLE_DEBUG OFF CACHE BOOL "" FORCE)
+    set(ENABLE_DEBUG on CACHE BOOL "" FORCE)
 endif()
 if(ENABLE_DEBUG)
     add_definitions(-DENABLE_DEBUG)
@@ -47,6 +47,10 @@ add_library(
 target_include_directories(modulekv PUBLIC
         include
         )
+
+if (ENABLE_DEBUG)
+    target_include_directories(modulekv PRIVATE test)
+endif()
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

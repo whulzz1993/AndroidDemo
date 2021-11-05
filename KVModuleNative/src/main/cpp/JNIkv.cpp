@@ -17,6 +17,10 @@
 #include "ScopedLocalUtfStr.h"
 
 #define LOG_TAG "StackManager"
+
+#if defined(ENABLE_DEBUG)
+#include "test.h"
+#endif
 #include "log.h"
 #include "ScopedBuffer.h"
 #include "utils.h"
@@ -167,6 +171,12 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     JNIEnv* env = NULL;
 
     LOGD("JNI_OnLoad");
+    std::string tmp("whulzz");
+    LOGD("tmp: %s", tmp.c_str());
+
+#if defined(ENABLE_DEBUG)
+    Test::main();
+#endif
 
     if (vm->GetEnv(&uenv.venv, JNI_VERSION_1_6) != JNI_OK) {
         LOGE("ERROR: GetEnv failed");

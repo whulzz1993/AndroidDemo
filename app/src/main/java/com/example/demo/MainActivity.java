@@ -4,13 +4,11 @@ import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
 
-//import com.core.rbtree.util.JniBridge;
 import com.example.demo.test.MeizuHook;
 import com.example.demo.test.RefUtils;
 import com.example.demo.test.Test;
 import com.example.javapipe.JavaPipe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,15 +37,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Test.main();
-//                JniBridge.NIRM(getApplicationInfo().dataDir, true);
-//                JniBridge.test();
-                mPipe.pipeWrite();
+                Test.main(getApplicationContext());
+
+                try {
+                    new FileOutputStream(new File(getApplicationInfo().dataDir, "xx"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -112,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_MEDIA_LOCATION,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.READ_SMS,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.READ_PHONE_NUMBERS,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
                 "flyme.permission.READ_STORAGE",
         };
         if (permissions.length > 0) {
